@@ -66,8 +66,8 @@ func Test_CacheBasic(t *testing.T) {
 	h := http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 		res.Write([]byte("hello"))
 	})
-	cacheExpireTime := 500 * time.Millisecond
-	cachePurseTime := 200 * time.Millisecond
+	cacheExpireTime := 50 * time.Microsecond
+	cachePurseTime := 20 * time.Microsecond
 	m := negroni.New()
 	m.Use(CacheBasic(dataStore, cacheExpireTime, cachePurseTime))
 	m.UseHandler(h)
